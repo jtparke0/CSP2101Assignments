@@ -1,0 +1,60 @@
+#!/bin/bash
+
+
+
+
+#Informs the user that a random age is being generated
+echo 'Random age is being generated...'
+
+#Generates a random integer between 20 and 70 inclusive
+#Stores random integer in the 'age' variable
+age=$((RANDOM % (70 - 20 +1) + 20))
+echo $age
+
+
+#Informs the user that the random integer has been generated
+echo 'Random age is generated.'
+
+#Begin a while loop to continue to prompt a guess from the user until correct age is guessed
+while true; do
+
+    #Prompt for input from user for a guess of the age
+    #Store response in the 'guess' variable
+    read -p 'Enter a guess of the age: ' guess
+
+    #If the entered guess from the user IS a valid integer, continue testing
+    if [[ "$guess" =~ ^[0-9]+$ ]]; then
+
+        #If the entered guess is equal to the generated age, inform the user it is correct
+        #Break from the while loop
+        if [ "$guess" = "$age" ]; then
+            echo 'Correct!'
+            break
+
+        #If the entered guess is not equal to the generated age
+        else
+            #If the entered guess is lower than the generated age, inform the user that the
+            #generated age is higher than the guess
+            if [ "$guess" -lt "$age" ]; then
+                echo 'The age is higher than your guess!'
+
+            #If the entered guess is not lower than the generated age, inform the user that
+            #the generated age is lower than the guess
+            else
+                echo 'The age is lower than your guess!'
+    
+            fi
+
+        fi
+
+    #If the entered guess is not an integer value, inform the user
+    else
+        echo "This is not an integer"
+
+    fi
+
+#End the while loop
+done
+
+#End the program
+exit 0
