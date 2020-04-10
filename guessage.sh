@@ -18,7 +18,6 @@ while true; do
         #(70 - 20 +1) + 20, where it is arranged as (upper boundary - lower boundary + 1) + lower boundary
         #Stores random integer in the 'age' variable
         age=$((RANDOM % (70 - 20 +1) + 20))
-        echo $age
         
 
 
